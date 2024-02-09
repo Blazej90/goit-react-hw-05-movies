@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -8,11 +9,10 @@ const Reviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=a067f81bd7a94c3876fea33a53d4c87a`
         );
-        const data = await response.json();
-        setReviews(data.results);
+        setReviews(response.data.results);
       } catch (error) {
         console.error('Error fetching reviews:', error);
       }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -8,11 +9,10 @@ const Cast = () => {
   useEffect(() => {
     const fetchCast = async () => {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=a067f81bd7a94c3876fea33a53d4c87a`
         );
-        const data = await response.json();
-        setCast(data.cast);
+        setCast(response.data.cast);
       } catch (error) {
         console.error('Error fetching cast:', error);
       }

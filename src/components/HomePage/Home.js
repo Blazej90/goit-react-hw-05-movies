@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -7,11 +8,10 @@ const Home = () => {
   useEffect(() => {
     const fetchTrendingMovies = async () => {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           'https://api.themoviedb.org/3/trending/movie/day?api_key=a067f81bd7a94c3876fea33a53d4c87a'
         );
-        const data = await response.json();
-        setTrendingMovies(data.results);
+        setTrendingMovies(response.data.results);
       } catch (error) {
         console.error('Error fetching trending movies:', error);
       }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios'; // Importowanie Axios
 
 const Movies = () => {
   const [query, setQuery] = useState('');
@@ -7,11 +8,12 @@ const Movies = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(
+      // Użycie axios.get do pobrania danych
+      const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
       );
-      const data = await response.json();
-      setSearchResults(data.results);
+      // Ustawienie danych w stanie komponentu
+      setSearchResults(response.data.results);
     } catch (error) {
       console.error('Error searching movies:', error);
     }
@@ -29,7 +31,6 @@ const Movies = () => {
       <ul>
         {searchResults.map(movie => (
           <li key={movie.id}>
-            {/* Przekierowanie do strony z detalami filmu po kliknięciu na tytuł */}
             <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
           </li>
         ))}
