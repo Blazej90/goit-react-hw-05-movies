@@ -13,7 +13,6 @@ export const App = () => {
         <Link to="/">Home</Link>
         <NavLink to="/movies">Movies</NavLink>
       </header>
-      <p>Something...</p>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />

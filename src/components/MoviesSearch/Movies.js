@@ -11,7 +11,7 @@ const Movies = () => {
         `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
       );
       const data = await response.json();
-      setSearchResults(data.results); // Aktualizacja wyników wyszukiwania
+      setSearchResults(data.results);
     } catch (error) {
       console.error('Error searching movies:', error);
     }
