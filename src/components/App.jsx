@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, NavLink, Link } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import Home from './HomePage/Home';
 import Movies from './MoviesSearch/Movies';
 import MovieDetails from './MovieDetails/MovieDetails';
@@ -12,10 +12,10 @@ export const App = () => {
   return (
     <div>
       <header>
-        <NavLink exact to="/" activeClassName="activeLink">
+        <NavLink exact to="/" className={styles.activeLink}>
           Home
         </NavLink>
-        <NavLink to="/movies" activeClassName="activeLink">
+        <NavLink to="/movies" className={styles.activeLink}>
           Movies
         </NavLink>
       </header>
