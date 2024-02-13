@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Popular Movies</h1>
+      <h1>Trending today</h1>
       <ul>
         {trendingMovies.map(movie => (
           <li key={movie.id}>

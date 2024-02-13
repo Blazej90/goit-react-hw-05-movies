@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Cast from '../Cast/Cast';
 import Reviews from '../MovieReviews/Reviews';
+import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -38,11 +39,16 @@ const MovieDetails = () => {
   return (
     <div>
       <h1>{movieDetails.title}</h1>
+      {movieDetails.poster_path && (
+        <img
+          className={styles.posterImage}
+          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+          alt={movieDetails.title}
+        />
+      )}{' '}
       <p>{movieDetails.overview}</p>
-
       <button onClick={toggleCastVisibility}>Cast</button>
       {castVisible && <Cast />}
-
       <button onClick={toggleReviewsVisibility}>Reviews</button>
       {reviewsVisible && <Reviews />}
     </div>
