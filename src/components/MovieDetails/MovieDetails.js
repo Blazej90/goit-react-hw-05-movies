@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Cast from '../Cast/Cast';
 import Reviews from '../MovieReviews/Reviews';
+import PropTypes from 'prop-types';
 import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
@@ -37,22 +38,42 @@ const MovieDetails = () => {
   if (!movieDetails) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className={styles.containerMovieDetails}>
       <h1>{movieDetails.title}</h1>
-      {movieDetails.poster_path && (
-        <img
-          className={styles.posterImage}
-          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-          alt={movieDetails.title}
-        />
-      )}{' '}
-      <p>{movieDetails.overview}</p>
-      <button onClick={toggleCastVisibility}>Cast</button>
-      {castVisible && <Cast />}
-      <button onClick={toggleReviewsVisibility}>Reviews</button>
-      {reviewsVisible && <Reviews />}
+      <div className={styles.containerPoster}>
+        {movieDetails.poster_path && (
+          <img
+            className={styles.posterImage}
+            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+            alt={movieDetails.title}
+          />
+        )}{' '}
+        <p className={styles.description}>{movieDetails.overview}</p>
+      </div>
+      <div>
+        <div className={styles.containerInformation}>
+          <p>Additional information</p>
+          <div className={styles.containerBtnsDetails}>
+            <button onClick={toggleCastVisibility} className={styles.btnCast}>
+              Cast
+            </button>
+            {castVisible && <Cast movieId={movieId} />}
+            <button
+              onClick={toggleReviewsVisibility}
+              className={styles.btnReviews}
+            >
+              Reviews
+            </button>
+            {reviewsVisible && <Reviews movieId={movieId} />}
+          </div>
+        </div>
+      </div>
     </div>
   );
+};
+
+MovieDetails.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };
 
 export default MovieDetails;

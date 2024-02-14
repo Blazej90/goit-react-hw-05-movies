@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import styles from './Reviews.module.css';
 
-const Reviews = () => {
-  const { movieId } = useParams();
+const Reviews = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={styles.containerReviews}>
       <h1>Reviews</h1>
       <ul>
         {reviews.map(review => (
@@ -34,6 +35,10 @@ const Reviews = () => {
       </ul>
     </div>
   );
+};
+
+Reviews.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };
 
 export default Reviews;

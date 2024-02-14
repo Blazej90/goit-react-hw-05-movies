@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import styles from './Movies.module.css';
 
 const Movies = () => {
@@ -48,6 +49,17 @@ const Movies = () => {
       </ul>
     </div>
   );
+};
+
+Movies.propTypes = {
+  query: PropTypes.string.isRequired,
+  searchResults: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default Movies;

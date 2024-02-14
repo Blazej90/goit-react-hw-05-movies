@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -32,6 +33,15 @@ const Home = () => {
       </ul>
     </div>
   );
+};
+
+Home.propTypes = {
+  trendingMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default Home;
