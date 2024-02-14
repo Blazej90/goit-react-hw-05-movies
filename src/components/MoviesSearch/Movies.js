@@ -26,8 +26,9 @@ const Movies = () => {
         type="text"
         value={query}
         onChange={e => setQuery(e.target.value)}
+        className={styles.labelSearch}
       />
-      <button onClick={handleSearch} className={styles.BtnSearch}>
+      <button onClick={handleSearch} className={styles.btnSearch}>
         {' '}
         Search
       </button>

@@ -10,3 +10,26 @@
   width: 200px;
   height: auto;
 }
+
+.btnSearch {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  width: 80px;
+  height: 40px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 999999px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.btnSearch:active {
+  transform: scale(0.95);
+}
+
+.labelSearch {
+  width: 300px;
+  height: 30px;
+}

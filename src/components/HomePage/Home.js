@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import styles from './Home.module.css';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -26,7 +27,7 @@ const Home = () => {
       <h1>Trending today</h1>
       <ul>
         {trendingMovies.map(movie => (
-          <li key={movie.id}>
+          <li key={movie.id} className={styles.containerMovies}>
             <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
           </li>
         ))}
