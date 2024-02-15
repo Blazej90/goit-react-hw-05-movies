@@ -34,16 +34,16 @@ const Movies = () => {
       </button>
       <ul className={styles.containerPosters}>
         {searchResults.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>
-              {movie.title}
+          <li key={movie.id} className={styles.posterItem}>
+            <Link to={`/movies/${movie.id}`} className={styles.posterLink}>
               {movie.poster_path && (
                 <img
                   className={styles.posterImage}
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
                 />
-              )}{' '}
+              )}
+              <span className={styles.posterTitle}>{movie.title}</span>
             </Link>
           </li>
         ))}
