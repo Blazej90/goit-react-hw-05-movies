@@ -14,10 +14,10 @@ export const App = ({ children }) => {
   return (
     <div>
       <header>
-        <NavLink exact="true" to="/" className={styles.activeLink}>
+        <NavLink exact to="/" className={styles.activeLink}>
           Home
         </NavLink>
-        <NavLink exact="true" to="/movies" className={styles.activeLink}>
+        <NavLink to="/movies" className={styles.activeLink}>
           Movies
         </NavLink>
       </header>
@@ -25,9 +25,10 @@ export const App = ({ children }) => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<MovieDetails />} />
-          <Route path="/movies/:movieId/cast" element={<Cast />} />
-          <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="/movies/:movieId/cast" element={<Cast />} />
+            <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+          </Route>
         </Routes>
       </Suspense>
       {children}

@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom'; // Import Outlet
 import axios from 'axios';
-import Cast from '../Cast/Cast';
-import Reviews from '../MovieReviews/Reviews';
 import PropTypes from 'prop-types';
 import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [castVisible, setCastVisible] = useState(false);
-  const [reviewsVisible, setReviewsVisible] = useState(false);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -27,14 +23,6 @@ const MovieDetails = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  const toggleCastVisibility = () => {
-    setCastVisible(!castVisible);
-  };
-
-  const toggleReviewsVisibility = () => {
-    setReviewsVisible(!reviewsVisible);
-  };
-
   if (!movieDetails) return <div>Loading...</div>;
 
   return (
@@ -47,27 +35,26 @@ const MovieDetails = () => {
             src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
             alt={movieDetails.title}
           />
-        )}{' '}
+        )}
         <p className={styles.description}>{movieDetails.overview}</p>
       </div>
       <div>
         <div className={styles.containerInformation}>
           <p>Additional information</p>
           <div className={styles.containerBtnsDetails}>
-            <button onClick={toggleCastVisibility} className={styles.btnCast}>
+            <Link to={`/movies/${movieId}/cast`} className={styles.btnCast}>
               Cast
-            </button>
-            {castVisible && <Cast movieId={movieId} />}
-            <button
-              onClick={toggleReviewsVisibility}
+            </Link>
+            <Link
+              to={`/movies/${movieId}/reviews`}
               className={styles.btnReviews}
             >
               Reviews
-            </button>
-            {reviewsVisible && <Reviews movieId={movieId} />}
+            </Link>
           </div>
         </div>
       </div>
+      <Outlet />
     </div>
   );
 };
