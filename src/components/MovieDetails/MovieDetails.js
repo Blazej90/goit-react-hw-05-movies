@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom'; // Import Outlet
+import { Link, Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import styles from './MovieDetails.module.css';
@@ -54,7 +54,7 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-      <Outlet />
+      <Outlet /> {/* Renderuje zawartość Cast i Reviews */}
     </div>
   );
 };

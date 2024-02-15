@@ -3,21 +3,20 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import styles from './App.module.css';
+import Home from './HomePage/Home';
+import Movies from './MoviesSearch/Movies';
+import MovieDetails from './MovieDetails/MovieDetails';
+import Cast from './Cast/Cast';
+import Reviews from './MovieReviews/Reviews';
 
-const Home = React.lazy(() => import('./HomePage/Home'));
-const Movies = React.lazy(() => import('./MoviesSearch/Movies'));
-const MovieDetails = React.lazy(() => import('./MovieDetails/MovieDetails'));
-const Cast = React.lazy(() => import('./Cast/Cast'));
-const Reviews = React.lazy(() => import('./MovieReviews/Reviews'));
-
-export const App = ({ children }) => {
+const App = ({ children }) => {
   return (
     <div>
       <header>
-        <NavLink exact to="/" className={styles.activeLink}>
+        <NavLink exact="true" to="/" className={styles.activeLink}>
           Home
         </NavLink>
-        <NavLink to="/movies" className={styles.activeLink}>
+        <NavLink exact="true" to="/movies" className={styles.activeLink}>
           Movies
         </NavLink>
       </header>
@@ -27,7 +26,7 @@ export const App = ({ children }) => {
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="/movies/:movieId/cast" element={<Cast />} />
-            <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
         </Routes>
       </Suspense>

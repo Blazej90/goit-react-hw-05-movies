@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import styles from './Cast.module.css';
@@ -36,7 +35,7 @@ const Cast = ({ movieId }) => {
                   src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
                   alt={actor.name}
                 />
-              )}{' '}
+              )}
             </li>
           ))}
         </div>
