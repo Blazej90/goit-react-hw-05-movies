@@ -1,3 +1,8 @@
+ul {
+  padding: 0;
+  list-style: none;
+}
+
 .containerSearch {
   padding-left: 25px;
 }
@@ -6,10 +11,21 @@
   margin-left: 10px;
 }
 
+.containerPosters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
 .posterImage {
-  width: 200px;
+  width: 100%;
   height: auto;
 }
+
+/* .posterImage {
+  width: 160px;
+  height: auto;
+} */
 
 .btnSearch {
   background-color: #333;

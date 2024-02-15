@@ -32,7 +32,7 @@ const Movies = () => {
         {' '}
         Search
       </button>
-      <ul>
+      <ul className={styles.containerPosters}>
         {searchResults.map(movie => (
           <li key={movie.id}>
             <Link to={`/movies/${movie.id}`}>
