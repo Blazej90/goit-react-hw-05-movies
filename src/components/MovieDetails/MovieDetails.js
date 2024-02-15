@@ -41,20 +41,16 @@ const MovieDetails = () => {
       <div>
         <div className={styles.containerInformation}>
           <p>Additional information</p>
-          <div className={styles.containerBtnsDetails}>
-            <Link to={`/movies/${movieId}/cast`} className={styles.btnCast}>
-              Cast
-            </Link>
-            <Link
-              to={`/movies/${movieId}/reviews`}
-              className={styles.btnReviews}
-            >
-              Reviews
-            </Link>
-          </div>
+          <Link to={`/movies/${movieId}/cast`} className={styles.btnCast}>
+            Cast
+          </Link>
+
+          <Link to={`/movies/${movieId}/reviews`} className={styles.btnReviews}>
+            Reviews
+          </Link>
         </div>
       </div>
-      <Outlet /> {/* Renderuje zawartość Cast i Reviews */}
+      <Outlet />
     </div>
   );
 };
