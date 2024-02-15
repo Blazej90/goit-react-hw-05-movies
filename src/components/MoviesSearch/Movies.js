@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import styles from './Movies.module.css';
 
-const Movies = ({ query, searchResults }) => {
-  const [localQuery, setLocalQuery] = useState(query || '');
-  const [localSearchResults, setLocalSearchResults] = useState(
-    searchResults || []
+const Movies = () => {
+  const { query: localQuery, searchResults: localSearchResults } = useParams();
+  const [localQueryState, setLocalQueryState] = useState(localQuery || '');
+  const [localSearchResultsState, setLocalSearchResultsState] = useState(
+    localSearchResults || []
   );
 
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?query=${localQuery}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
+        `https://api.themoviedb.org/3/search/movie?query=${localQueryState}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
       );
-      setLocalSearchResults(response.data.results);
+      setLocalSearchResultsState(response.data.results);
     } catch (error) {
       console.error('Error searching movies:', error);
     }
@@ -32,8 +33,8 @@ const Movies = ({ query, searchResults }) => {
       <h1 className={styles.searchTitle}>Search Movies</h1>
       <input
         type="text"
-        value={localQuery}
-        onChange={e => setLocalQuery(e.target.value)}
+        value={localQueryState}
+        onChange={e => setLocalQueryState(e.target.value)}
         onKeyPress={handleKeyPress}
         className={styles.labelSearch}
       />
@@ -41,7 +42,7 @@ const Movies = ({ query, searchResults }) => {
         Search
       </button>
       <ul className={styles.containerPosters}>
-        {localSearchResults.map(movie => (
+        {localSearchResultsState.map(movie => (
           <li key={movie.id} className={styles.posterItem}>
             <Link to={`/movies/${movie.id}`} className={styles.posterLink}>
               {movie.poster_path ? (

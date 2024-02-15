@@ -25,8 +25,13 @@ const MovieDetails = () => {
 
   if (!movieDetails) return <div>Loading...</div>;
 
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
   return (
     <div className={styles.containerMovieDetails}>
+      <button onClick={handleGoBack}>Go back</button>
       <h1>{movieDetails.title}</h1>
       <div className={styles.containerPoster}>
         {movieDetails.poster_path && (
@@ -44,12 +49,12 @@ const MovieDetails = () => {
           <Link to={`/movies/${movieId}/cast`} className={styles.btnCast}>
             Cast
           </Link>
-
           <Link to={`/movies/${movieId}/reviews`} className={styles.btnReviews}>
             Reviews
           </Link>
         </div>
       </div>
+
       <Outlet />
     </div>
   );
