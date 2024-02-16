@@ -69,8 +69,8 @@ const App = ({ children }) => {
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<MovieDetails />}>
-            <Route path="cast/:movieId" element={<Cast />} />
-            <Route path="reviews/:movieId" element={<Reviews />} />
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
         </Routes>
       </Suspense>

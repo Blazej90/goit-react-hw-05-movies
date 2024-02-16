@@ -7,24 +7,28 @@
 // const Movies = () => {
 //   const [localSearchResults, setLocalSearchResults] = useState([]);
 //   const [searchQuery, setSearchQuery] = useState('');
-
 //   const [searchParams, setSearchParams] = useSearchParams();
 
 //   useEffect(() => {
 //     const queryParam = searchParams.get('query');
 //     setSearchQuery(queryParam || '');
+//     fetchMovies(queryParam);
 //   }, [searchParams]);
 
-//   const handleSearch = async () => {
+//   const fetchMovies = async query => {
 //     try {
 //       const response = await axios.get(
-//         `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
+//         `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
 //       );
 //       setLocalSearchResults(response.data.results);
-//       setSearchParams({ query: searchQuery });
 //     } catch (error) {
 //       console.error('Error searching movies:', error);
 //     }
+//   };
+
+//   const handleSearch = async () => {
+//     setSearchParams({ query: searchQuery });
+//     fetchMovies(searchQuery);
 //   };
 
 //   const handleKeyPress = event => {
@@ -95,7 +99,11 @@ const Movies = () => {
   useEffect(() => {
     const queryParam = searchParams.get('query');
     setSearchQuery(queryParam || '');
-    fetchMovies(queryParam); // Fetch movies when query parameter changes
+    if (queryParam) {
+      fetchMovies(queryParam);
+    } else {
+      setLocalSearchResults([]); // Clear search results if queryParam is null
+    }
   }, [searchParams]);
 
   const fetchMovies = async query => {
@@ -110,8 +118,11 @@ const Movies = () => {
   };
 
   const handleSearch = async () => {
-    setSearchParams({ query: searchQuery });
-    fetchMovies(searchQuery);
+    if (searchQuery) {
+      // Check if searchQuery is not empty or null
+      setSearchParams({ query: searchQuery });
+      fetchMovies(searchQuery);
+    }
   };
 
   const handleKeyPress = event => {
