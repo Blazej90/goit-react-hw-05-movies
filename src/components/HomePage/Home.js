@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <div>
       <h1>Trending today</h1>
-      <ul>
+      <ul className={styles.containerList}>
         {trendingMovies.map(movie => (
           <li key={movie.id} className={styles.containerMovies}>
             <Link to={`/movies/${movie.id}`}>{movie.title}</Link>

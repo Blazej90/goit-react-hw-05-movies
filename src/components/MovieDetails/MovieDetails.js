@@ -31,7 +31,9 @@ const MovieDetails = () => {
 
   return (
     <div className={styles.containerMovieDetails}>
-      <button onClick={handleGoBack}>Go back</button>
+      <button onClick={handleGoBack} className={styles.btnGoBack}>
+        Go back
+      </button>
       <h1>{movieDetails.title}</h1>
       <div className={styles.containerPoster}>
         {movieDetails.poster_path && (
@@ -46,10 +48,13 @@ const MovieDetails = () => {
       <div>
         <div className={styles.containerInformation}>
           <p>Additional information</p>
-          <Link to={`/movies/${movieId}/cast`} className={styles.btnCast}>
+          <Link to={`/movies/${movieId}/cast`} className={styles.linkCast}>
             Cast
           </Link>
-          <Link to={`/movies/${movieId}/reviews`} className={styles.btnReviews}>
+          <Link
+            to={`/movies/${movieId}/reviews`}
+            className={styles.linkReviews}
+          >
             Reviews
           </Link>
         </div>
