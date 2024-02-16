@@ -1,25 +1,117 @@
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+// import React, { useEffect, useState } from 'react';
+// import { Link, useSearchParams } from 'react-router-dom';
+// import axios from 'axios';
+// import PropTypes from 'prop-types';
+// import styles from './Movies.module.css';
+
+// const Movies = () => {
+//   const [localSearchResults, setLocalSearchResults] = useState([]);
+//   const [searchQuery, setSearchQuery] = useState('');
+
+//   const [searchParams, setSearchParams] = useSearchParams();
+
+//   useEffect(() => {
+//     const queryParam = searchParams.get('query');
+//     setSearchQuery(queryParam || '');
+//   }, [searchParams]);
+
+//   const handleSearch = async () => {
+//     try {
+//       const response = await axios.get(
+//         `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
+//       );
+//       setLocalSearchResults(response.data.results);
+//       setSearchParams({ query: searchQuery });
+//     } catch (error) {
+//       console.error('Error searching movies:', error);
+//     }
+//   };
+
+//   const handleKeyPress = event => {
+//     if (event.key === 'Enter') {
+//       handleSearch();
+//     }
+//   };
+
+//   return (
+//     <div className={styles.containerSearch}>
+//       <h1 className={styles.searchTitle}>Search Movies</h1>
+//       <input
+//         type="text"
+//         value={searchQuery}
+//         onChange={e => setSearchQuery(e.target.value)}
+//         onKeyPress={handleKeyPress}
+//         className={styles.labelSearch}
+//       />
+//       <button onClick={handleSearch} className={styles.btnSearch}>
+//         Search
+//       </button>
+//       <ul className={styles.containerPosters}>
+//         {localSearchResults.map(movie => (
+//           <li key={movie.id} className={styles.posterItem}>
+//             <Link to={`/movies/${movie.id}`} className={styles.posterLink}>
+//               {movie.poster_path ? (
+//                 <img
+//                   className={styles.posterImage}
+//                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+//                   alt={movie.title}
+//                 />
+//               ) : (
+//                 <span className={styles.noPoster}>No poster</span>
+//               )}
+//               <span className={styles.posterTitle}>{movie.title}</span>
+//             </Link>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
+
+// Movies.propTypes = {
+//   query: PropTypes.string,
+//   searchResults: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired,
+//       poster_path: PropTypes.string,
+//     })
+//   ),
+// };
+
+// export default Movies;
+
+import React, { useEffect, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import styles from './Movies.module.css';
 
 const Movies = () => {
-  const { query: localQuery, searchResults: localSearchResults } = useParams();
-  const [localQueryState, setLocalQueryState] = useState(localQuery || '');
-  const [localSearchResultsState, setLocalSearchResultsState] = useState(
-    localSearchResults || []
-  );
+  const [localSearchResults, setLocalSearchResults] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSearch = async () => {
+  useEffect(() => {
+    const queryParam = searchParams.get('query');
+    setSearchQuery(queryParam || '');
+    fetchMovies(queryParam); // Fetch movies when query parameter changes
+  }, [searchParams]);
+
+  const fetchMovies = async query => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?query=${localQueryState}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
+        `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
       );
-      setLocalSearchResultsState(response.data.results);
+      setLocalSearchResults(response.data.results);
     } catch (error) {
       console.error('Error searching movies:', error);
     }
+  };
+
+  const handleSearch = async () => {
+    setSearchParams({ query: searchQuery });
+    fetchMovies(searchQuery);
   };
 
   const handleKeyPress = event => {
@@ -33,8 +125,8 @@ const Movies = () => {
       <h1 className={styles.searchTitle}>Search Movies</h1>
       <input
         type="text"
-        value={localQueryState}
-        onChange={e => setLocalQueryState(e.target.value)}
+        value={searchQuery}
+        onChange={e => setSearchQuery(e.target.value)}
         onKeyPress={handleKeyPress}
         className={styles.labelSearch}
       />
@@ -42,7 +134,7 @@ const Movies = () => {
         Search
       </button>
       <ul className={styles.containerPosters}>
-        {localSearchResultsState.map(movie => (
+        {localSearchResults.map(movie => (
           <li key={movie.id} className={styles.posterItem}>
             <Link to={`/movies/${movie.id}`} className={styles.posterLink}>
               {movie.poster_path ? (
@@ -64,14 +156,14 @@ const Movies = () => {
 };
 
 Movies.propTypes = {
-  query: PropTypes.string.isRequired,
+  query: PropTypes.string,
   searchResults: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       poster_path: PropTypes.string,
     })
-  ).isRequired,
+  ),
 };
 
 export default Movies;
