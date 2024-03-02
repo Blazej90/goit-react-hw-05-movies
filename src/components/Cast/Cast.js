@@ -25,22 +25,20 @@ const Cast = () => {
 
   return (
     <div>
-      <h1>Cast</h1>
-      <ul>
-        <div className={styles.containerCast}>
-          {cast.map(actor => (
-            <li key={actor.id} className={styles.containerCast}>
-              {actor.name}
-              {actor.profile_path && (
-                <img
-                  className={styles.actorImage}
-                  src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-                  alt={actor.name}
-                />
-              )}
-            </li>
-          ))}
-        </div>
+      <h2>Cast</h2>
+      <ul className={styles.containerCast}>
+        {cast.map(actor => (
+          <li key={actor.id} className={styles.castItem}>
+            {actor.profile_path && (
+              <img
+                className={styles.actorImage}
+                src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                alt={actor.name}
+              />
+            )}
+            {actor.name}
+          </li>
+        ))}
       </ul>
     </div>
   );

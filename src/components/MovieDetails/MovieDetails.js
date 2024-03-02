@@ -47,16 +47,18 @@ const MovieDetails = () => {
       </div>
       <div>
         <div className={styles.containerInformation}>
-          <p>Additional information</p>
-          <Link to={`/movies/${movieId}/cast`} className={styles.linkCast}>
-            Cast
-          </Link>
-          <Link
-            to={`/movies/${movieId}/reviews`}
-            className={styles.linkReviews}
-          >
-            Reviews
-          </Link>
+          <h3>Additional information</h3>
+          <div className={styles.castAndReviews}>
+            <Link to={`/movies/${movieId}/cast`} className={styles.linkCast}>
+              Cast
+            </Link>
+            <Link
+              to={`/movies/${movieId}/reviews`}
+              className={styles.linkReviews}
+            >
+              Reviews
+            </Link>
+          </div>
         </div>
       </div>
 

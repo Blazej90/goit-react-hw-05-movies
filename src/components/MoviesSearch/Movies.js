@@ -45,17 +45,19 @@ const Movies = () => {
 
   return (
     <div className={styles.containerSearch}>
-      <h1 className={styles.searchTitle}>Search Movies</h1>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={e => setSearchQuery(e.target.value)}
-        onKeyPress={handleKeyPress}
-        className={styles.labelSearch}
-      />
-      <button onClick={handleSearch} className={styles.btnSearch}>
-        Search
-      </button>
+      <h2 className={styles.searchTitle}>Search Movies</h2>
+      <div className={styles.searchLabel}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
+          className={styles.labelSearch}
+        />
+        <button onClick={handleSearch} className={styles.btnSearch}>
+          Search
+        </button>
+      </div>
       <ul className={styles.containerPosters}>
         {localSearchResults.map(movie => (
           <li key={movie.id} className={styles.posterItem}>

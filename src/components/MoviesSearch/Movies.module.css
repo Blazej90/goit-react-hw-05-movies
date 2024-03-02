@@ -3,18 +3,25 @@ ul {
   list-style: none;
 }
 
-.containerSearch {
+/* .containerSearch {
   padding-left: 25px;
+} */
+
+.searchLabel {
+  display: flex;
+  justify-content: center;
 }
 
-.BtnSearch {
-  margin-left: 10px;
+.btnSearch {
+  width: 100px;
+  margin: 0;
 }
 
 .containerPosters {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .posterItem {
@@ -59,6 +66,6 @@ ul {
 
 .labelSearch {
   width: 300px;
-  height: 30px;
+  /* height: 30px; */
   font-size: large;
 }

@@ -2,14 +2,20 @@ li {
   list-style: none;
 }
 
-.actorImage {
-  width: 130px;
-  height: auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.containerCast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
 
-.containerCast > li {
-  display: flex;
-  flex-direction: column;
-  margin: 30px;
+.castItem {
+  width: 24%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.actorImage {
+  width: 100%;
+  height: auto;
 }

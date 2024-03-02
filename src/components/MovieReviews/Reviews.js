@@ -25,7 +25,7 @@ const Reviews = () => {
 
   return (
     <div className={styles.containerReviews}>
-      <h1>Reviews</h1>
+      <h2>Reviews</h2>
       <ul>
         {reviews.map(review => (
           <li key={review.id}>

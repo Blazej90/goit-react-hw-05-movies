@@ -1,5 +1,16 @@
-h1 {
-  margin-left: 10px;
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.titleTrending {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 .containerList {
@@ -8,4 +19,22 @@ h1 {
 
 .containerMovies {
   margin-top: 10px;
+}
+
+.containerPosters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.posterItem {
+  width: 24%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.posterImage {
+  width: 100%;
+  height: auto;
 }
