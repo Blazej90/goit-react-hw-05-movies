@@ -1,71 +1,123 @@
-ul {
-  padding: 0;
-  list-style: none;
+.containerSearch {
+  text-align: center;
+  margin: 20px;
 }
 
-/* .containerSearch {
-  padding-left: 25px;
-} */
+.searchTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
 
 .searchLabel {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.labelSearch {
+  width: 300px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  margin-right: 10px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.labelSearch:focus {
+  border-color: #777;
+  outline: none;
+  background-color: #444;
 }
 
 .btnSearch {
-  width: 100px;
-  margin: 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btnSearch:hover {
+  background-color: #444;
+  border-color: #777;
 }
 
 .containerPosters {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
+  padding: 0;
+  list-style: none;
 }
 
 .posterItem {
-  width: 24%;
+  width: 150px;
+  height: 280px;
   text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #444;
+}
+
+.posterItem:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .posterImage {
   width: 100%;
   height: auto;
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
+  display: block;
 }
 
 .posterLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #555;
+  border-radius: 0 0 5px 5px;
   text-decoration: none;
-  color: black;
-  display: block;
-  border: 1px solid #ccc;
-  padding: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
-}
-
-.btnSearch {
-  background-color: #333;
   color: #fff;
-  border: none;
-  margin: 5px;
-  width: 80px;
-  height: 40px;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  flex-grow: 1;
+}
+
+.posterLink:hover {
+  background-color: #666;
+}
+
+.noPoster {
+  padding: 20px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.posterTitle {
+  flex-grow: 1;
+  margin-top: auto;
+  color: inherit;
   text-decoration: none;
-  cursor: pointer;
-  font-size: medium;
-  border-radius: 999999px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.1s;
-}
-
-.btnSearch:active {
-  transform: scale(0.95);
-}
-
-.labelSearch {
-  width: 300px;
-  /* height: 30px; */
-  font-size: large;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  overflow-wrap: break-word;
+  padding: 10px 10px 0;
 }

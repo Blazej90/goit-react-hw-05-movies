@@ -6,24 +6,38 @@ import styles from './SliderComponent.module.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const SliderComponent = ({ movies, onSliderClose }) => {
+const SliderComponent = ({ movies }) => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    nextArrow: <div className={styles.nextArrow}>&#10095;</div>,
+    prevArrow: <div className={styles.prevArrow}>&#10094;</div>,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-
-  console.log('Movies in slider:', movies);
 
   return (
     <div className={styles.sliderContainer}>
-      <div className={styles.overlay} onClick={onSliderClose} />
-      <button className={styles.closeButton} onClick={onSliderClose}>
-        Close
-      </button>
       <Slider {...settings}>
         {movies.map(movie => (
           <div key={movie.id} className={styles.sliderItem}>
@@ -43,7 +57,6 @@ const SliderComponent = ({ movies, onSliderClose }) => {
 
 SliderComponent.propTypes = {
   movies: PropTypes.array.isRequired,
-  onSliderClose: PropTypes.func.isRequired,
 };
 
 export default SliderComponent;

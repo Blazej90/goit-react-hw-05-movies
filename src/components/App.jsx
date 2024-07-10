@@ -18,7 +18,7 @@ const App = ({ children }) => {
           Home
         </NavLink>
         <NavLink to="/movies" className={styles.activeLink}>
-          Movies
+          Find your movie...
         </NavLink>
       </header>
       <Suspense fallback={<div>Loading...</div>}>
