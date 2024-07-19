@@ -1,27 +1,47 @@
 header {
   background-color: #333;
   color: #fff;
-  padding: 30px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
 }
 
 header a {
-  font-size: large;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #fff;
   text-decoration: none;
   margin-right: 10px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-header a:hover {
-  text-decoration: underline;
-  color: darkred;
-  transition: 300ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+header a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #b0bec5;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transition: width 0.3s ease;
 }
 
-header a:active:hover {
-  text-decoration: underline;
-  color: darkred;
-  transition: 300ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+header a:hover::after {
+  width: 100%;
+}
+
+header a:active {
+  color: #90a4ae;
+  transform: scale(0.95);
+}
+
+.homeIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
 }

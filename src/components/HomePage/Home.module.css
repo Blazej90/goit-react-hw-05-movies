@@ -106,11 +106,13 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  position: relative; /* Dodane, aby umożliwić pozycjonowanie ikonki */
 }
 
 .labelSearch {
   width: 300px;
   padding: 10px 15px;
+  padding-left: 40px; /* Dodane, aby zapewnić miejsce na ikonę */
   font-size: 1rem;
   background-color: #333;
   color: #fff;
@@ -118,6 +120,10 @@ body {
   border-radius: 4px;
   margin-right: 10px;
   transition: border-color 0.3s ease, background-color 0.3s ease;
+  background-image: url('/public/images/loupe.svg'); /* Dodane */
+  background-repeat: no-repeat; /* Dodane */
+  background-position: 10px center; /* Dodane */
+  background-size: 20px 20px; /* Dodane */
 }
 
 .labelSearch:focus {

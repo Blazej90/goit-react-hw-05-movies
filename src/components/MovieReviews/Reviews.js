@@ -26,14 +26,18 @@ const Reviews = () => {
   return (
     <div className={styles.containerReviews}>
       <h2>Reviews</h2>
-      <ul>
-        {reviews.map(review => (
-          <li key={review.id}>
-            <p>{review.content}</p>
-            <p>Author: {review.author}</p>
-          </li>
-        ))}
-      </ul>
+      {reviews.length === 0 ? (
+        <p>No reviews yet</p>
+      ) : (
+        <ul>
+          {reviews.map(review => (
+            <li key={review.id}>
+              <p>{review.content}</p>
+              <p>Author: {review.author}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
