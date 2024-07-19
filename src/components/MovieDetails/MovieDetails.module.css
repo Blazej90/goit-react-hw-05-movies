@@ -1,3 +1,136 @@
+/* .containerMovieDetails {
+  margin: 20px;
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btnGoBack {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.btnGoBack:hover {
+  background-color: #444;
+  border-color: #777;
+}
+
+.btnGoBack:active {
+  transform: scale(0.95);
+}
+
+.posterImage {
+  width: 30%;
+  height: auto;
+  max-width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.containerPoster {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.description {
+  margin: 20px 0;
+  padding: 15px;
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.containerInformation {
+  width: 100%;
+  max-width: 300px;
+  padding: 15px;
+  background-color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.containerInformation h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 10px;
+}
+
+.castAndReviews {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkCast,
+.linkReviews {
+  display: block;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  color: #ddd;
+  text-decoration: none;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.linkCast:hover,
+.linkReviews:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .containerPoster {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .posterImage {
+    width: 80%;
+    max-width: none;
+  }
+
+  .containerInformation {
+    width: 100%;
+  }
+
+  .btnGoBack {
+    width: auto;
+    padding: 10px 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .description {
+    font-size: 1rem;
+  }
+
+  .btnGoBack {
+    width: auto;
+    padding: 10px 15px;
+  }
+} */
+
 .containerMovieDetails {
   margin: 20px;
   padding: 20px;
@@ -96,6 +229,11 @@
 .linkReviews:hover {
   background-color: #555;
   color: #fff;
+}
+
+.activeLink {
+  background-color: #444; /* Kolor tła dla aktywnego linku */
+  color: #fff; /* Kolor tekstu dla aktywnego linku */
 }
 
 @media (max-width: 768px) {
