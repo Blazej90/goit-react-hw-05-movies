@@ -12,7 +12,7 @@ const Reviews = () => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=a067f81bd7a94c3876fea33a53d4c87a`
+          `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
         );
         setReviews(response.data.results);
       } catch (error) {

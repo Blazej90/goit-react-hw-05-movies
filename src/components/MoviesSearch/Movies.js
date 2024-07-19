@@ -6,7 +6,7 @@ import styles from './Movies.module.css';
 const Movies = () => {
   const [localSearchResults, setLocalSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const queryParam = searchParams.get('query');
@@ -21,7 +21,7 @@ const Movies = () => {
   const fetchMovies = async query => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=a067f81bd7a94c3876fea33a53d4c87a`
+        `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       );
       setLocalSearchResults(response.data.results);
     } catch (error) {

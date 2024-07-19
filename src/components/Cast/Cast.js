@@ -12,7 +12,7 @@ const Cast = () => {
     const fetchCast = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=a067f81bd7a94c3876fea33a53d4c87a`
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
         );
         setCast(response.data.cast);
       } catch (error) {

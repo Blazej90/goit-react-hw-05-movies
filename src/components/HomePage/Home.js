@@ -12,7 +12,7 @@ const Home = () => {
     const fetchTrendingMovies = async () => {
       try {
         const response = await fetch(
-          'https://api.themoviedb.org/3/trending/movie/day?api_key=a067f81bd7a94c3876fea33a53d4c87a'
+          `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
         );
         if (response.ok) {
           const data = await response.json();
