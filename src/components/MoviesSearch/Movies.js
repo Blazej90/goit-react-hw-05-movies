@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import styles from './Movies.module.css';
 
 const Movies = () => {
@@ -30,34 +29,9 @@ const Movies = () => {
     }
   };
 
-  const handleSearch = async () => {
-    if (searchQuery) {
-      setSearchParams({ query: searchQuery });
-      fetchMovies(searchQuery);
-    }
-  };
-
-  const handleKeyPress = event => {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  };
-
   return (
     <div className={styles.containerSearch}>
-      <h2 className={styles.searchTitle}>Search Movies</h2>
-      <div className={styles.searchLabel}>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-          onKeyPress={handleKeyPress}
-          className={styles.labelSearch}
-        />
-        <button onClick={handleSearch} className={styles.btnSearch}>
-          Search
-        </button>
-      </div>
+      <h2 className={styles.searchTitle}>Search Results for "{searchQuery}"</h2>
       <ul className={styles.containerPosters}>
         {localSearchResults.map(movie => (
           <li key={movie.id} className={styles.posterItem}>
@@ -78,17 +52,6 @@ const Movies = () => {
       </ul>
     </div>
   );
-};
-
-Movies.propTypes = {
-  query: PropTypes.string,
-  searchResults: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      poster_path: PropTypes.string,
-    })
-  ),
 };
 
 export default Movies;

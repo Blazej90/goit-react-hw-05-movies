@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import SliderComponent from '../Slider/SliderComponent';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
@@ -26,8 +28,36 @@ const Home = () => {
     fetchTrendingMovies();
   }, []);
 
+  const handleSearch = () => {
+    if (searchQuery) {
+      navigate(`/movies?query=${searchQuery}`);
+    }
+  };
+
+  const handleKeyPress = event => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div>
+      <div className={styles.containerSearch}>
+        <div className={styles.searchLabel}>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Find the movie..."
+            className={styles.labelSearch}
+          />
+          <button onClick={handleSearch} className={styles.btnSearch}>
+            Search
+          </button>
+        </div>
+      </div>
+
       <SliderComponent movies={trendingMovies} />
 
       <h2 className={styles.titleTrending}>Trending Movies</h2>
