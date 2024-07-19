@@ -10,12 +10,34 @@ li {
 }
 
 .castItem {
-  width: 24%;
+  width: 100%;
+  max-width: 200px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .actorImage {
   width: 100%;
   height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+  .castItem {
+    max-width: 30%;
+  }
+}
+
+@media (max-width: 900px) {
+  .castItem {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .castItem {
+    max-width: 100%;
+  }
 }
